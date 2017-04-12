@@ -2,6 +2,9 @@
 Thumbs.db
 ehthumbs.db
 
+# dirs
+DrinksSale/bin/
+
 # Folder config file
 Desktop.ini
 
