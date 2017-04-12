@@ -1,0 +1,20 @@
+﻿@using DrinksSale.Models
+@model ProductModel
+@{
+    var id = "productpic" + @Model.Id;
+    var submitpic = "subminpic" + @Model.Id;
+}
+@using (Ajax.BeginForm("UploadImage", "Admin", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = @id,
+    HttpMethod = "POST"
+}, new { enctype = "multipart/form-data", name = "upload" }))
+{
+    @Html.Hidden("key", Request.HttpMethod == "GET" ? Request.QueryString["key"] : Request.Form["key"])
+    @Html.HiddenFor(x => x.Id)
+    <img class="product-image" 
+         @if (Model.Image != null) { <text> src="@Url.Content(Model.Image + "?" + DateTime.Now)"</text>} />
+    <input type="file" name="file" accept="image/*"/>
+    <input type="submit" name="Submit" value="Upload" />
+}

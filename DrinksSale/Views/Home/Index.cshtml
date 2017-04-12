@@ -1,0 +1,74 @@
+﻿@using DrinksSale.Models
+@model ServingModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@*@using (Ajax.BeginForm("Upload", "Home", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST"
+}, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="FileUpload" />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />
+}*@
+<div class="sell-body">
+    <div id="templates">
+        <div class="order">
+            <span class="multiplier"></span>
+            <span class="name"></span>
+            <span class="order-close">X</span>
+        </div>
+        <div class="delivery">
+            <span class="multiplier"></span>
+            <span class="name"></span>
+        </div>
+    </div>
+    <div class="products-info">
+        <div class="product-list">
+            @for (var i = 0; i < Model.Products.Count(); i++)
+            {
+                <div class="product-box" value="@Model.Products[i].Id" onclick="AddOrder(@Model.Products[i].Id)">
+                    @Html.HiddenFor(model => model.Products[i].Count)
+                    <img class="product-image"
+                         @if (Model.Products[i].Image != null) { <text> src="@Url.Content(Model.Products[i].Image + "?" + DateTime.Now)" </text> } />
+                    <div class="product-info">
+                        <span class="name">@Model.Products[i].Name</span>
+                        <span class="count">@Model.Products[i].Count</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="value">@Model.Products[i].Value</span>р.
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="cart">
+            <div id="order-list">
+            </div>
+            <div class="result">Итого: <span class="value">0</span></div>
+
+            <button id="buy-button" name="Add" onclick="Buy()">Оплатить</button>
+        </div>
+    </div>
+    <div class="insert-box">
+        <div class="coin-list">
+        @for (var i = 0; i < Model.Coins.Count(); i++)
+        {
+                <div class="coin-box@(@Model.Coins[i].IsBlocked ? " blocked" : "")"
+                     @if (!Model.Coins[i].IsBlocked)
+                     { <text>onclick = "@(Html.Raw(String.Format("InsertCoin({0}, {1})", Model.Coins[i].Id, Model.Coins[i].Value)))"</text>}>
+                    <img class="coin-image" src="@Url.Content(Model.Coins[i].Image)" />
+                </div>
+        }
+        </div>
+        @Html.Label(Model.Inserted.ToString(), new { id = "inserted" })
+        <div id="delivery-list">
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/home.js")
+}

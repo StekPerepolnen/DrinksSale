@@ -1,0 +1,313 @@
+﻿.sell-body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.admin-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+#templates {
+    display: none;
+}
+
+.products-info {
+    padding-top: 30px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.product-list {
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow: scroll; /* Добавляем полосы прокрутки */
+    -webkit-flex: 1 1 auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 0px;
+}
+
+.cart {
+    height: 200px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 25px;
+    position: relative;
+}
+
+.insert-box {
+    background: darkgray;
+    width: 30%;
+}
+
+.product-box {
+    width: 150px;
+    height: 200px;
+    border-top: 5px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: ghostwhite;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    cursor: pointer;
+}
+
+.product-box .count:before {
+    content: "["
+}
+
+.product-box .count:after {
+    content: "]"
+}
+
+.product-box:hover {
+    border-top: 3px solid gray;
+    height: 198px;
+    margin-bottom: 12px;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px auto;
+}
+
+.product-price {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: antiquewhite;
+    font-size: 28px;
+    font-weight: bold;
+    color: saddlebrown;
+}
+
+.insert-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coin-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coin-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    background-color: lightgray;
+    border-top: 5px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.coin-box.blocked {
+    background-color: black;
+    border-top: 1px solid gray;
+    border-bottom: 5px solid gray;
+}
+
+.coin-box:not(.blocked):hover {
+    border-top: 3px solid gray;
+    height: 78px;
+    margin-bottom: 22px;
+}
+
+.coin-image {
+    width: 100%;
+}
+
+#inserted {
+    background-color: lightgray;
+    color: black;
+    padding: 3px 10px;
+    border: 2px solid gray;
+    font-size: 28px;
+}
+
+#order-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.order {
+    position: relative;
+    padding-right: 10px;
+    margin-right: 30px;
+}
+
+.multiplier:not(.active) {
+    display: none;
+}
+
+.multiplier:after {
+    content: '× ';
+    margin-left: 2px;
+}
+
+.order-close {
+    font-size: 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.cart .result {
+    position: absolute;
+    bottom: 15px;
+    color: limegreen;
+}
+
+#buy-button {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+}
+
+.cart .result .value {
+    color: white;
+}
+
+#delivery-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+}
+
+.delivery.product {
+    color: darkred;
+}
+
+.delivery.coin {
+    color: darkcyan;
+}
+
+#product-form-list {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    flex-wrap: wrap;
+}
+
+.product-form-image {
+
+}
+
+.product-form-data{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 70%;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around
+}
+
+.product-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.product-info-block {
+    margin-right: 15px;
+}
+
+.product-form .product-image {
+    cursor: pointer;
+}
+
+.product-commands{
+    display: flex;
+    justify-content: center;
+}
+
+.product-commands button {
+    margin-left: 15px;
+}
+
+.form-group-number {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.form-group-number input{
+    margin-left: 15px;
+}
+
+.product-form:hover {
+    background-color: ghostwhite;
+}
+
+.coin-form-list {
+    margin: 20px;
+    margin-bottom: 20px;
+}
+
+.coin-form form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.coin-form  input[type="number"]{
+    width: 100px;
+}
+
+.coin-form form > label, .coin-form form > input {
+    margin-right: 20px;
+}
+
+.coin-form .name {
+    width: 100px;
+    text-align: right;
+}
+
+input[name="FileUpload"] {
+    /*display: none;*/
+}

@@ -1,0 +1,46 @@
+﻿@using DrinksSale.Models
+@model ProductModel
+@{
+    var id = "product" + @Model.Id;
+    var data = "productdata" + @Model.Id;
+}
+@using (Ajax.BeginForm("UpdateProduct", "Admin", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = data,
+    HttpMethod = "POST"
+}, new { @class = "product-block" }))
+{
+    @Html.Hidden("key", Request.HttpMethod == "GET" ? Request.QueryString["key"] : Request.Form["key"])
+    @Html.HiddenFor(x => x.Id)
+    <div class="product-info">
+        <div class="product-info-block">
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+        <div class="product-info-block">
+            @Html.LabelFor(x => x.Count)
+            @Html.TextBoxFor(x => x.Count, new { @class = "form-control", type = "number", min = 0, max = 10000 })
+        </div>
+        <div class="product-info-block">
+            @Html.LabelFor(x => x.Value)
+            @Html.TextBoxFor(x => x.Value, new { @class = "form-control", type = "number", min = 0, max = 100000 })
+        </div>
+    </div>
+        <div class="product-commands">
+            <button class="btn btn-default" name="change" type="submit">Сохранить</button>
+        </div>
+}
+@using (Ajax.BeginForm("RemoveProduct", "Admin", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.ReplaceWith,
+    UpdateTargetId = id,
+    HttpMethod = "POST"
+}, new { @class = "product-block" }))
+{
+    @Html.Hidden("key", Request.HttpMethod == "GET" ? Request.QueryString["key"] : Request.Form["key"])
+    @Html.HiddenFor(x => x.Id)
+    <div class="product-commands">
+        <button class="btn btn-default" name="remove" type="submit">Удалить</button>
+    </div>
+}

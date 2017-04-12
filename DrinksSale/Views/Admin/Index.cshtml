@@ -1,0 +1,50 @@
+﻿@using DrinksSale.Models
+@model ServingModel
+    
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.Hidden("secret-key", Request.QueryString["key"])
+<div class="admin-body">
+    <div id="templates">
+        <div class="order">
+            <span class="multiplier"></span>
+            <span class="name"></span>
+            <span class="order-close">X</span>
+        </div>
+        <div class="delivery">
+            <span class="multiplier">2</span>
+            <span class="name">Pepsic</span>
+        </div>
+    </div>
+
+    <div class="coin-form-list">
+        @for (var i = 0; i < Model.Coins.Count(); i++)
+        {
+            var id = "coin" + @Model.Coins[i].Id;
+            <div class="coin-form" id="@id" value="@Model.Coins[i].Id">
+                @Html.Partial("CoinPartial", Model.Coins[i])
+            </div>
+        }
+    </div>
+    <div id="product-form-list">
+        @for (var i = 0; i < Model.Products.Count(); i++)
+        {
+            @Html.Partial("ProductPartial", Model.Products[i])
+        }
+    </div>
+    @using (Ajax.BeginForm("CreateProduct", "Admin", new AjaxOptions()
+    {
+        InsertionMode = InsertionMode.InsertAfter,
+        UpdateTargetId = "product-form-list"
+    }))
+    {
+        @Html.Hidden("key", Request.HttpMethod == "GET" ? Request.QueryString["key"] : Request.Form["key"])
+        <button class="product-form" id="create-product" type="submit">Добавить</button>
+    }
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/admin.js")
+}

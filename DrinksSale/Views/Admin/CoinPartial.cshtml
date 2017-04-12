@@ -1,0 +1,22 @@
+﻿@using DrinksSale.Models
+@model CoinModel
+@{
+    var id = "coin" + @Model.Id;
+}
+
+@using (Ajax.BeginForm("UpdateCoin", "Admin", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = id
+}))
+{
+    @Html.Hidden("key", Request.HttpMethod == "GET" ? Request.QueryString["key"] : Request.Form["key"])
+    @Html.HiddenFor(x => x.Id)
+    <label class="name">@Model.Name</label>
+    @Html.TextBoxFor(x => x.Reserve, new { @class = "form-control", type = "number" })
+    <label>
+        @Html.CheckBoxFor(x => x.IsBlocked)
+        @Html.LabelFor(x => x.IsBlocked)
+    </label>
+    <button class="btn btn-default" type="submit">Сохранить</button>
+}

@@ -1,0 +1,16 @@
+﻿@using DrinksSale.Models
+@model ProductModel
+@{
+    var id = "product" + @Model.Id;
+    var picid = "productpic" + @Model.Id;
+    var dataid = "productdata" + @Model.Id;
+}
+
+<div class="product-form" id="@id" value="@Model.Id">
+    <div class ="product-form-image" id="@picid">
+        @Html.Partial("ProductImagePartial", Model)
+    </div>
+    <div class ="product-form-data" id="@dataid">
+        @Html.Partial("ProductDataPartial", Model)
+    </div>
+</div>
