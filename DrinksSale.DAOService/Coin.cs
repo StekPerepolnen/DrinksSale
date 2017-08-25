@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DrinksSale.Database
+namespace DrinksSale.Service
 {
     using System;
     using System.Collections.Generic;

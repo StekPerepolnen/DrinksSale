@@ -4,23 +4,23 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace DrinksSale.Database
+namespace DrinksSale.Service
 {
-    public class Repository: IRepository
+    public class SaleRepository: ISaleRepository
     {
         #region Private
 
-        private static void Db(Action<DbDrinksSaleEntities1> predicate)
+        private static void Db(Action<DbDrinksSaleEntities> predicate)
         {
-            using (var db = new DbDrinksSaleEntities1())
+            using (var db = new DbDrinksSaleEntities())
             {
                 predicate.Invoke(db);
             }
         }
 
-        private static TResult Db<TResult>(Func<DbDrinksSaleEntities1, TResult> predicate)
+        private static TResult Db<TResult>(Func<DbDrinksSaleEntities, TResult> predicate)
         {
-            using (var db = new DbDrinksSaleEntities1())
+            using (var db = new DbDrinksSaleEntities())
             {
                 return predicate.Invoke(db);
             }

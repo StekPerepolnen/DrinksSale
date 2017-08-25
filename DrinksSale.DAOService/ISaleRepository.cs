@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace DrinksSale.Database
+namespace DrinksSale.Service
 {
-    public interface IRepository
+    public interface ISaleRepository
     {
         List<Drink> GetDrinksList();
 

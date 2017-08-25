@@ -58,7 +58,7 @@
           <Property Name="Value" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="DbDrinksSaleEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DbDrinksSaleEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Coins" EntityType="Self.Coin" />
           <EntitySet Name="Drinks" EntityType="Self.Drink" />
         </EntityContainer>
@@ -67,7 +67,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbDrinksSaleModelStoreContainer" CdmEntityContainer="DbDrinksSaleEntities1">
+        <EntityContainerMapping StorageEntityContainer="DbDrinksSaleModelStoreContainer" CdmEntityContainer="DbDrinksSaleEntities">
           <EntitySetMapping Name="Coins">
             <EntityTypeMapping TypeName="DbDrinksSaleModel.Coin">
               <MappingFragment StoreEntitySet="Coins">

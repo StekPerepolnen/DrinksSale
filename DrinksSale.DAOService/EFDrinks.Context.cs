@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DrinksSale.Database
+namespace DrinksSale.Service
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbDrinksSaleEntities1 : DbContext
+    public partial class DbDrinksSaleEntities : DbContext
     {
-        public DbDrinksSaleEntities1()
-            : base("name=DbDrinksSaleEntities1")
+        public DbDrinksSaleEntities()
+            : base("name=DbDrinksSaleEntities")
         {
         }
     
